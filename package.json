@@ -2,10 +2,13 @@
   "name": "is-fudding",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "train": "node ./src/brain/train.js"
+    "train": "node ./src/brain/train.js",
+    "trainer": "node ./trainer.js",
+    "clone": "node ./clone.js",
+    "reverse": "node ./reverseClone.js"
   },
   "type": "module",
   "author": "JVRL18",

@@ -90,8 +90,7 @@ client.login(process.env.TOKEN)
         const top = `\x1b[34m┏╋◆ ${pkg.default.name.toUpperCase()} ◆╋┓\n\n\x1b[31m┏╋━━━━━━◥◣◆◢◤━━━━━━━╋┓`
 
         console.log('\n' + top + "\n\n\x1b[32m[!] Bot Status: ONLINE")
-        
-        setInterval(() => { loadAutoBrain(false) }, 5 * 60 * 1000)
+
         //bot by João Bot, last time updated: 25/12/2022
     })
     .catch(err => { console.log("\x1b[31mBot login err: " + err); })

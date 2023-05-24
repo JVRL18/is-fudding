@@ -26,7 +26,7 @@ export const execute = async (message, client) => {
 
     const userMessage = `\`\`\`${content}\`\`\`\n`
 
-    const aiResponse = brain.run(content)
+    const aiResponse = brain.run(content.toLowerCase())
 
     if (aiResponse === 'ok') {
         const channel = await client.channels.fetch("1111041029357969541")
@@ -49,7 +49,7 @@ export const execute = async (message, client) => {
     }
 
     //Auto learning network -
-    const autoAiResponse = autoBrain.run(content)
+    const autoAiResponse = autoBrain.run(content.toLowerCase())
 
     if (autoAiResponse === 'ok') {
         await registerToNotAutoFud(content)
