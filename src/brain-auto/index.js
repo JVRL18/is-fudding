@@ -18,7 +18,7 @@ export const loadAutoBrain = async (useCached) => {
 
         const trainingData = parseTo(data1, 'fud').concat(parseTo(data2, 'ok'))
 
-        net.train(trainingData, { log: true, errorThresh: 0.011, iterations: 500 })
+        net.train(trainingData, { log: true, errorThresh: 0.011, iterations: 100, learningRate: 0.6 })
 
         const data = net.toJSON()
         saveAutoBrainTrainingData(data)

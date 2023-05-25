@@ -9,8 +9,10 @@ export const embed_404_error_message = text => new EmbedBuilder()
  * 
  * @param {User} user 
  */
-export const templateEmbed = async (user, text, fudding) => {
+export const templateEmbed = async (user, text, fudding, url) => {
   return new EmbedBuilder()
+    .setURL(url)
+    .setTitle("goto")
     .setAuthor({
       name: user.tag,
       iconURL: user.avatarURL({ size: 1024, extension: 'png' })

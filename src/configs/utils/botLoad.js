@@ -16,7 +16,7 @@ export const registerTextCommands = () => {
                 let name = key.slice(0, key.length - 3)
                 if (data[name] === undefined) {
                     data[name] = [name]
-                    writeFileSync(`./src/commands/aliases/cmds.json`, JSON.stringify(data, null, 2))
+                    writeFileSync(`./src/commands/aliases/cmds.json`, JSON.stringify(data))
                 }
             }
         }

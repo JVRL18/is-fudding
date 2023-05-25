@@ -39,23 +39,3 @@ for (const word of notFudFiles) {
 }
 
 writeFileSync('./src/data2/notFud.json', JSON.stringify(cleanData))
-
-const autoNotFudData = await JSON.parse(readFileSync('./src/data2/notFud.json'))
-const currentNotFudData = await JSON.parse(readFileSync('./src/data/notFud.json'))
-
-let toFixed = []
-for (const word of currentNotFudData.concat(autoNotFudData)) {
-    const ignore = ["https://", "0x"]
-
-    let ignored = false
-    for (const item of ignore) {
-        if (word.includes(item)) ignored = true
-    }
-    if (ignored) continue
-
-    if (!toFixed.includes(word.toLowerCase())) {
-        toFixed.push(word.toLowerCase())
-    }
-}
-
-writeFileSync('./src/data/notFud.json', JSON.stringify(toFixed))

@@ -14,9 +14,18 @@ export const name = 'messageCreate'
  */
 export const execute = async (message, client) => {
     const watchList = process.env.watchList
+
     if (message.author.bot) return
     if (!message.content) return
     if (!watchList.includes(message.channelId)) return
+
+    const ignore = ["https://", "0x"]
+    
+    for (const ig of ignore) {
+        if(message.content.includes(ig)) return
+    }
+
+    const url = `https://discord.com/channels/${message.guildId}/${message.channelId}/${message.id}`
 
     const brain = await loadBrain(true)
     const autoBrain = await loadAutoBrain(true)
@@ -35,7 +44,7 @@ export const execute = async (message, client) => {
 
         await channel.send({
             components: [FudButtons()],
-            embeds: [await templateEmbed(user, userMessage + aiEvaluator, false)]
+            embeds: [await templateEmbed(user, userMessage + aiEvaluator, false, url)]
         })
     } else {
         const channel = await client.channels.fetch("1111041001272905788")
@@ -44,7 +53,7 @@ export const execute = async (message, client) => {
 
         await channel.send({
             components: [FudButtons()],
-            embeds: [await templateEmbed(user, userMessage + aiEvaluator, true)]
+            embeds: [await templateEmbed(user, userMessage + aiEvaluator, true, url)]
         })
     }
 
@@ -60,7 +69,7 @@ export const execute = async (message, client) => {
 
         await channel.send({
             components: [FudButtons()],
-            embeds: [await templateEmbed(user, userMessage + aiEvaluator, false)]
+            embeds: [await templateEmbed(user, userMessage + aiEvaluator, false, url)]
         })
     } else {
         await registerToAutoFud(content)
@@ -71,7 +80,7 @@ export const execute = async (message, client) => {
 
         await channel.send({
             components: [FudButtons()],
-            embeds: [await templateEmbed(user, userMessage + aiEvaluator, true)]
+            embeds: [await templateEmbed(user, userMessage + aiEvaluator, true, url)]
         })
     }
 }
